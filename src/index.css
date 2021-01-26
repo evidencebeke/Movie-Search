@@ -1,7 +1,7 @@
 body {
   background-color: rgb(237, 248, 248);
   padding: 0;
-  margin: 20px;
+  margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -32,6 +32,11 @@ code {
   margin-right: auto;
   margin-left: auto;
   margin-top: 70px;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px 60px;
 }
 .card {
   background-color: white;
@@ -42,14 +47,24 @@ code {
   box-shadow: 2px 2px 2px 2px rgb(190, 174, 174);
   border-radius: 30px;
   text-align: center;
+  border: none;
 }
 img {
   display: block;
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 10px;
-  width: 300px;
+  width: 100%;
 }
 .credit > small {
   background-color: red;
+}
+@media only screen and (max-width: 786px) {
+  body {
+    margin: 2;
+  }
+  .card-container {
+    width: 95%;
+    grid-template-columns: auto;
+  }
 }

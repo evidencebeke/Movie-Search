@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MovieComponent from './movieComponent'
 
 class MovieSearch extends React.Component {
     constructor(props) {
@@ -16,12 +17,7 @@ class MovieSearch extends React.Component {
             [name]:value
         })
     }
-    componentDidMount(){
-        
-        fetch("https://swapi.dev/api/people/1/")
-            .then(response=>response.json())
-            .then(data=>{console.log(data)})
-    }
+    
     handleSubmit = (e)=>{
         e.preventDefault()
          const apiUrl =`https://api.themoviedb.org/3/search/movie?api_key=523791d44abb49c1d137110c6733f23a&language=en-US&query=${this.state.movieName}&page=1&include_adult=false`
@@ -29,6 +25,7 @@ class MovieSearch extends React.Component {
             fetch(apiUrl)
             .then(response=>response.json())
             .then(data=>{
+                console.log(data.results)
                 this.setState({
                     movies:data.results
                 })
@@ -55,16 +52,9 @@ class MovieSearch extends React.Component {
                </form>
             
                <div className = 'card-container'>
-            {this.state.movies.filter(movie=>movie.poster_path).map(movie=>(<div className = 'card'>
-                <img className = 'card-image'  src= {`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} alt= {`${movie.title} poster`}/>
-                <div className = 'card-details'>
-                    <h3>{movie.title}</h3>
-                    <p><small>RELEASE DATE: {movie.release_date} </small></p>
-                    <p><small>RATING: {movie.vote_average}</small></p>
-                    <p>{movie.overview}</p>
-
-                </div>
-            </div>))}
+            {this.state.movies.filter(movie=>movie.poster_path).map(movie=>(
+                <MovieComponent movie = {movie} />
+           ))}
         </div>
         
                
@@ -84,6 +74,7 @@ class MovieSearch extends React.Component {
            
 //             const response = await fetch(url)
 //             const data = await response.json()
+//             console.log(data.results)
 //             setMovies(data.results);
 
 //         }
@@ -108,16 +99,9 @@ class MovieSearch extends React.Component {
 //             <button type = 'submit'>Search</button>
 //         </form>
 //         <div className = 'card-container'>
-//             {movies.filter(movie=>movie.poster_path).map(movie=>(<div>
-//                 <img src= {`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`} alt= {`${movie.title} poster`}/>
-//                 <div>
-//                     <h4>{movie.title}</h4>
-//                     <p><small>RELEASE DATE: {movie.release_date} </small></p>
-//                     <p><small>RATING: {movie.vote_average}</small></p>
-//                     <p>{movie.overview}</p>
-
-//                 </div>
-//             </div>))}
+//             {movies.filter(movie=>movie.poster_path).map(movie=>(
+//            <MovieComponent movie = {movie} />
+//            ))}
 //         </div>
 //         </>
       
