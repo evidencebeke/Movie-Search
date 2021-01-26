@@ -38,6 +38,7 @@ class MovieSearch extends React.Component {
 
         return ( 
             <div>
+                <header className = 'header' ><h1>My Movie search App</h1></header>
                 <form className = 'form' onSubmit = {this.handleSubmit}>
                 <label className = 'label' htmlFor = 'movieName'>Input the movie name:</label>
                <input

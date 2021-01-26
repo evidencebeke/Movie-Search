@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(237, 248, 248);
+  background-color: rgb(113, 143, 143);
   padding: 0;
   margin: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -67,4 +67,10 @@ img {
     width: 95%;
     grid-template-columns: auto;
   }
+}
+.header {
+  margin-right: auto;
+  margin-left: auto;
+  color: rgb(56, 52, 52);
+  text-align: center;
 }
